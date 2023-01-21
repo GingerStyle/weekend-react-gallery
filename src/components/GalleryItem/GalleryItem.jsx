@@ -1,6 +1,12 @@
-import React from 'react';
 
-function GalleryItem(){
+function GalleryItem({itemProp}){
+    return(
+        <>
+            <li key={itemProp.id}>
+            <img src={itemProp.path}/>
+            </li>
+        </>
+    );
 
 }
 

@@ -1,11 +1,30 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link, useHistory} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList.jsx';
 import GalleryItem from '../GalleryItem/GalleryItem.jsx';
+import Axios from 'axios';
 
 
 function App() {
+  const [gallery, setGallery] = useState([]);
+
+  const getItemList = () => {
+    Axios.get('/gallery')
+    .then((response) => {
+      console.log('response from GET command', response);
+      setGallery(response.data);
+    }).catch((error) => {
+      console.log('error getting data from server', error);
+    });
+    console.log('gallery contains:', gallery);
+  };
+
+  useEffect(() => {
+    getItemList();
+  }, []);
+
     return (
       <Router>
         <div className="App">
@@ -17,8 +36,7 @@ function App() {
               </li>
             </ul>
           </header>
-          <p>Gallery goes here</p>
-          <img src="images/goat_small.jpg"/>
+          <GalleryList galleryProp={gallery}/>
           <Route path='/' exact>
             <GalleryList />
           </Route>
