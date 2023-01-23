@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { HashRouter as Router, Route, Link} from 'react-router-dom';
 import './App.css';
 import GalleryList from '../GalleryList/GalleryList.jsx';
-import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 import Axios from 'axios';
 
 
@@ -26,25 +24,12 @@ function App() {
   }, []);
 
     return (
-      <Router>
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">Gallery of My Life</h1>
-            <ul>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-            </ul>
           </header>
-          <GalleryList galleryProp={gallery}/>
-          <Route path='/' exact>
-            <GalleryList />
-          </Route>
-          <Route path='/GalleryItem'>
-            <GalleryItem />
-          </Route>
+          <GalleryList galleryProp={gallery} getItemsProp={getItemList}/>
         </div>
-      </Router>
     );
 }
 
