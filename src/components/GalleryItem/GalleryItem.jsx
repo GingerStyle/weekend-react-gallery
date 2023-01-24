@@ -8,7 +8,7 @@ function GalleryItem({itemProp, functionProp}){
     //function to switch the photo to the description when the photo is clicked
     const switchPhoto = () => {
         if(photoToggle){
-            //setPhotoToggle(!photoToggle);
+            //I can't figure out a good place to setPhotoToggle(false) without causing an infinite loop
             return <img src={itemProp.path} onClick={() => switchPhoto()}/>;
         }else{
             //setPhotoToggle(!photoToggle);
