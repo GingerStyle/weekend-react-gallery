@@ -19,12 +19,12 @@ function GalleryList({galleryProp, getItemsProp}) {
 
     return(
         <>
-            <ul> 
+            <div> 
                 {galleryProp.map(animal => (
                     <GalleryItem key={animal.id} itemProp={animal} functionProp={updateLikes}/>
                 ))}
                 
-            </ul>
+            </div>
         </>
     );
 }

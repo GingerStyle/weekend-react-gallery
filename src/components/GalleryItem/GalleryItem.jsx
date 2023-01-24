@@ -4,11 +4,13 @@ function GalleryItem({itemProp, functionProp}){
 
     return(
         <>
-            <li>
+            <div className='items'>
                 <img src={itemProp.path}/>
+                <br></br>
                 <button onClick={() => functionProp(itemProp.id)}>Like</button>
                 <p>This pictures has {itemProp.likes} likes.</p>
-            </li>
+                <br></br>
+            </div>
         </>
     );
 
